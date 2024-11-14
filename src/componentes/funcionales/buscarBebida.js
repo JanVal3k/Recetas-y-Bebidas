@@ -51,9 +51,9 @@ const SelectorBebidas = forwardRef((props, ref) => {
   return (
     <div
       ref={ref}
-      className="flex flex-col lg:flex-row min-h-screen bg-gray-200"
+      className="flex flex-col lg:flex-row min-h-screen max-h-full bg-gray-200"
     >
-      <div className="w-full lg:w-1/3 sm:h-24 p-4 shadow-lg overflow-y-auto">
+      <div className="w-full lg:w-1/3 lg:h-[100vh] sm:h-24 p-4 shadow-lg overflow-y-auto">
         <h1 className="text-3xl sm:text-4xl font-bold mb-6 text-center p-4">
           Detalles de la bebida
         </h1>
@@ -153,30 +153,3 @@ const SelectorBebidas = forwardRef((props, ref) => {
 });
 
 export default SelectorBebidas;
-{
-  /* <div className="w-full lg:w-2/3 p-4 overflow-y-auto">
-<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-  {Object.entries(bebidasPorTipo).map(([tipo, bebidasDeTipo]) => (
-    <div
-      key={tipo}
-      className="bg-gradient-to-r from-violet-300 to-violet-400 p-6 rounded-lg shadow-xl"
-    >
-      <h2 className="text-2xl font-bold mb-6 text-center">{tipo}</h2>
-      <ul className="space-y-3">
-        {bebidasDeTipo.map((bebida) => (
-          <li
-            key={bebida.idDrink}
-            className="p-3 bg-white bg-opacity-90 rounded-lg cursor-pointer 
-                   hover:bg-opacity-100 transition-all duration-200 
-                   text-base text-center shadow-md"
-            onClick={() => handleSeleccionBebida(bebida)}
-          >
-            {bebida.strDrink}
-          </li>
-        ))}
-      </ul>
-    </div>
-  ))}
-</div>
-</div> */
-}

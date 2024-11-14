@@ -48,7 +48,7 @@ const SelectorPais = forwardRef((props, ref) => {
     {
       label: "Imagen",
       content: (
-        <div className="h-full flex rounded-lg items-center justify-center overflow-hidden">
+        <div className="h-full sm:h-[70vh] flex rounded-lg items-center justify-center overflow-hidden">
           {recetaSeleccionada ? (
             <ImagenesReceta idReceta={recetaSeleccionada} />
           ) : (
@@ -62,7 +62,7 @@ const SelectorPais = forwardRef((props, ref) => {
     {
       label: "Receta",
       content: (
-        <div className="h-full flex rounded-lg items-center justify-center overflow-hidden">
+        <div className="h-full sm:h-[70vh] flex rounded-lg items-center justify-center overflow-hidden">
           {recetaSeleccionada ? (
             <IngredientesYPreparacion idReceta={recetaSeleccionada} />
           ) : (

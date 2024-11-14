@@ -19,12 +19,12 @@ const ImagenesReceta = ({ idReceta }) => {
   }
 
   return (
-    <div className="flex flex-col items-center w-full md:w-auto">
+    <div className="flex flex-col items-center w-full md:w-auto md:h-auto sm:w-auto">
       {detallesReceta.map((receta, index) => (
         <img
           src={receta.strMealThumb}
           alt={receta.strMeal}
-          className="max-w-[80vw] md:max-w-[60vh] min-w-[60vh] h-auto rounded-xl shadow-2xl hover:scale-105 transition-transform duration-200 mb-4"
+          className="max-w-[80vw] md:max-w-[60wh] min-w-[60vh] h-auto rounded-xl shadow-2xl hover:scale-105 transition-transform duration-200 mb-4"
         />
       ))}
     </div>
