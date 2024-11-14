@@ -51,15 +51,15 @@ const SelectorBebidas = forwardRef((props, ref) => {
   return (
     <div
       ref={ref}
-      className="flex flex-col md:flex-row h-[70vh] bg-gray-200 overflow-auto"
+      className="flex flex-col lg:flex-row min-h-screen bg-gray-200"
     >
-      <div className="w-full md:w-1/3 p-4 shadow-lg overflow-y-auto">
-        <h1 className="text-2xl font-bold mb-4 text-center">
+      <div className="w-full lg:w-1/3 sm:h-24 p-4 shadow-lg overflow-y-auto">
+        <h1 className="text-3xl sm:text-4xl font-bold mb-6 text-center p-4">
           Detalles de la bebida
         </h1>
         {bebidaSeleccionada ? (
           <div className="bg-gradient-to-r from-violet-300 to-violet-400 p-4 rounded-lg">
-            <h2 className="text-xl font-semibold mb-2 text-center">
+            <h2 className="text-2xl font-semibold mb-4 text-center">
               {detallesBebida?.strDrink || bebidaSeleccionada.strDrink}
             </h2>
             <img
@@ -68,19 +68,19 @@ const SelectorBebidas = forwardRef((props, ref) => {
                 bebidaSeleccionada.strDrinkThumb
               }
               alt={detallesBebida?.strDrink || bebidaSeleccionada.strDrink}
-              className="w-full h-[40vh] md:h-[50vh] object-cover rounded-lg mb-4"
+              className="w-full h-48 sm:h-64 md:h-50 object-cover rounded-lg mb-6"
             />
-            <p className="text-black mb-2 text-center">
+            <p className="text-black mb-4 text-lg text-center">
               Tipo:{" "}
               {detallesBebida?.strAlcoholic || bebidaSeleccionada.strAlcoholic}
             </p>
             {detallesBebida && (
-              <div className="bg-white p-4 rounded-lg shadow-lg">
-                <h3 className="text-lg font-semibold mb-2">
+              <div className="bg-white p-6 rounded-lg shadow-lg">
+                <h3 className="text-xl font-semibold mb-4">
                   Ingredientes y Medidas:
                 </h3>
                 <table className="w-full">
-                  <tbody>
+                  <tbody className="divide-y divide-gray-200">
                     {Object.keys(detallesBebida)
                       .filter(
                         (key) =>
@@ -89,9 +89,11 @@ const SelectorBebidas = forwardRef((props, ref) => {
                       .map((key, index) => {
                         const measureKey = `strMeasure${index + 1}`;
                         return (
-                          <tr key={key} className="border-b last:border-b-0">
-                            <td className="py-2 pr-4">{detallesBebida[key]}</td>
-                            <td className="py-2 text-gray-500">
+                          <tr key={key}>
+                            <td className="py-3 pr-4 text-base">
+                              {detallesBebida[key]}
+                            </td>
+                            <td className="py-3 text-gray-600 text-base">
                               {detallesBebida[measureKey] || "Al gusto"}
                             </td>
                           </tr>
@@ -103,33 +105,45 @@ const SelectorBebidas = forwardRef((props, ref) => {
             )}
           </div>
         ) : (
-          <p className="text-black text-center">
+          <p className="text-lg text-gray-700 text-center p-6 bg-white rounded-lg">
             Selecciona una bebida para ver sus detalles
           </p>
         )}
-        <div className="w-full max-h-full h-[60vh] flex justify-center items-center">
+        <div className="w-full max-h-full h-[100px] flex justify-center items-center">
           {!mientasSeSelecciona2 && <MientrasSelecciona2 />}
         </div>
       </div>
-      <div className="w-full md:w-2/3 p-4 overflow-y-auto">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div className="w-full lg:w-2/3 p-4 overflow-y-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {Object.entries(bebidasPorTipo).map(([tipo, bebidasDeTipo]) => (
             <div
               key={tipo}
-              className="bg-gradient-to-r from-violet-300 to-violet-400 p-4 rounded-lg shadow"
+              className="bg-gradient-to-r from-violet-300 to-violet-400 p-6 rounded-lg shadow-xl"
             >
-              <h2 className="text-xl font-bold mb-4 text-center">{tipo}</h2>
-              <ul className="space-y-2">
+              <h2 className="text-2xl font-bold mb-6 text-center">{tipo}</h2>
+              <select
+                className="w-full p-3 rounded-lg border border-gray-300 
+                     shadow-sm focus:border-violet-500 focus:ring focus:ring-violet-200 
+                     bg-white cursor-pointer text-base"
+                onChange={(e) => {
+                  const bebidaSeleccionada = bebidasDeTipo.find(
+                    (bebida) => bebida.idDrink === e.target.value
+                  );
+                  if (bebidaSeleccionada) {
+                    handleSeleccionBebida(bebidaSeleccionada);
+                  }
+                }}
+                defaultValue=""
+              >
+                <option value="" disabled>
+                  Selecciona una bebida
+                </option>
                 {bebidasDeTipo.map((bebida) => (
-                  <li
-                    key={bebida.idDrink}
-                    className="p-2 rounded cursor-pointer hover:bg-gray-100 transition-colors duration-200"
-                    onClick={() => handleSeleccionBebida(bebida)}
-                  >
+                  <option key={bebida.idDrink} value={bebida.idDrink}>
                     {bebida.strDrink}
-                  </li>
+                  </option>
                 ))}
-              </ul>
+              </select>
             </div>
           ))}
         </div>
@@ -139,3 +153,30 @@ const SelectorBebidas = forwardRef((props, ref) => {
 });
 
 export default SelectorBebidas;
+{
+  /* <div className="w-full lg:w-2/3 p-4 overflow-y-auto">
+<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+  {Object.entries(bebidasPorTipo).map(([tipo, bebidasDeTipo]) => (
+    <div
+      key={tipo}
+      className="bg-gradient-to-r from-violet-300 to-violet-400 p-6 rounded-lg shadow-xl"
+    >
+      <h2 className="text-2xl font-bold mb-6 text-center">{tipo}</h2>
+      <ul className="space-y-3">
+        {bebidasDeTipo.map((bebida) => (
+          <li
+            key={bebida.idDrink}
+            className="p-3 bg-white bg-opacity-90 rounded-lg cursor-pointer 
+                   hover:bg-opacity-100 transition-all duration-200 
+                   text-base text-center shadow-md"
+            onClick={() => handleSeleccionBebida(bebida)}
+          >
+            {bebida.strDrink}
+          </li>
+        ))}
+      </ul>
+    </div>
+  ))}
+</div>
+</div> */
+}
