@@ -110,7 +110,7 @@ const SelectorBebidas = forwardRef((props, ref) => {
             Selecciona una bebida para ver sus detalles
           </p>
         )}
-        <div className="w-full max-h-full h-[100px] flex justify-center items-center">
+        <div className="w-full max-h-full h-[100px] my-28 flex justify-center items-center">
           {!mientasSeSelecciona2 && <MientrasSelecciona2 />}
         </div>
       </div>

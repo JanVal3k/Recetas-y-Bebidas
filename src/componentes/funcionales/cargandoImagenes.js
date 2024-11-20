@@ -23,7 +23,7 @@ const CargandoComponente = ({
       <img
         src="imagen/Cocking-unscreen.gif"
         alt="Cargando..."
-        className="w-64 h-64 md:w-96 md:h-96"
+        className="sm:w-60 sm:h-60 md:w-96 md:h-96 lg:w-64 lg:h-64  "
       />
       <br />
       <p className="mt-4 text-xl font-bold text-gray-800">

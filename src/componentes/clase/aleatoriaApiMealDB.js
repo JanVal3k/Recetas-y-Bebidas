@@ -100,15 +100,3 @@ const useRecetasAleatorias = (cantidad = 3) => {
 };
 
 export default useRecetasAleatorias;
-// recetas.forEach((receta, index) => {
-//   console.log(`Receta ${index + 1}:`, receta); // Mostramos cada objeto de recetas
-// });
-// const resultado = JSON.stringify(
-//   recetas,
-//   (clave, valor) => {
-//     if (valor === "" || valor === " " || valor === null) return undefined;
-//     return valor;
-//   },
-//   2
-// );
-// console.log(`Este es el resultado: ${resultado}`);

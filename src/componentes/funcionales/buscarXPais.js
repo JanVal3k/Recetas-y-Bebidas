@@ -80,7 +80,7 @@ const SelectorPais = forwardRef((props, ref) => {
       ref={ref}
       className="flex flex-col md:flex-row relative h-[70vh] bg-gray-200 overflow-hidden"
     >
-      <div className="w-full md:w-1/2 lg:w-1/2 p-4 overflow-y-auto">
+      <div className="w-full md:w-1/2 lg:w-1/2 p-4 overflow-y-auto shadow-2xl">
         <h2 className="text-2xl text-gray-800 font-bold mb-4">
           Selecciona un país:
         </h2>
@@ -130,15 +130,15 @@ const SelectorPais = forwardRef((props, ref) => {
           {!mientasSeSelecciona && <MientrasSelecciona />}
         </div>
       </div>
-      <div className="w-full md:w-1/2 lg:w-1/2 sm:h--1/2 min-h-[50vh] flex flex-col bg-red-500 overflow-hidden">
-        <div className="mb-4">
+      <div className="w-full md:w-1/2 lg:w-1/2 sm:h--1/2 min-h-[50vh] flex flex-col overflow-hidden">
+        <div className="mb-4 my-4 z-10">
           <Tabs
             tabs={tabs.map((tab) => tab.label)}
             activeTab={tabActiva}
             onTabChange={setTabActiva}
           />
         </div>
-        <div className="flex-1 sm:my-[-130px] my-[-30px] ">
+        <div className="flex-1 sm:mt-[-175px] lg:mt-[-7vh] ">
           {estaCargando ? (
             <div className="h-full flex items-center justify-center">
               <CargandoComponente
