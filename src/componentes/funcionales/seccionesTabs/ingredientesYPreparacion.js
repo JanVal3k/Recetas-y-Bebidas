@@ -37,7 +37,7 @@ const IngredientesYPreparacion = ({ idReceta }) => {
           alt={detallesReceta[0].strMeal}
           className="absolute inset-0 w-full aspect-[1/2] h-full object-cover"
         />
-        {/* Panel de Ingredientes */}
+
         <div
           className={`absolute inset-0 border-2 rounded-xl border-gray-300 bg-white/95 transition-opacity duration-400 ${
             mostrarInstrucciones
@@ -60,7 +60,6 @@ const IngredientesYPreparacion = ({ idReceta }) => {
           </div>
         </div>
 
-        {/* Panel de Instrucciones */}
         <div
           className={`absolute inset-0 bg-white/95 border-2 border-gray-300 rounded-xl transition-opacity duration-400 ${
             mostrarInstrucciones
@@ -84,7 +83,6 @@ const IngredientesYPreparacion = ({ idReceta }) => {
           </div>
         </div>
 
-        {/* Botón flotante para cambiar vista */}
         <button
           className="absolute bottom-4 right-4 px-4 py-2 bg-gray-600 text-white text-sm sm:text-base rounded-lg shadow-lg hover:bg-gray-500 transition-colors duration-200"
           onClick={toggleInstrucciones}

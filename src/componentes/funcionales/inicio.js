@@ -60,11 +60,7 @@ const Inicio = forwardRef((props, ref) => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.8, duration: 0.5 }}
-        >
-          <button className="bg-teal-500 hover:bg-teal-600 text-white font-bold py-2 px-4 rounded-full transition-colors duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
-            Explora nuestras recetas
-          </button>
-        </motion.div>
+        ></motion.div>
       </motion.div>
     </div>
   );

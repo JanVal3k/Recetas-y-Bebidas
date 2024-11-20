@@ -53,7 +53,8 @@ const SelectorBebidas = forwardRef((props, ref) => {
       ref={ref}
       className="flex flex-col lg:flex-row min-h-screen max-h-full bg-gray-200"
     >
-      <div className="w-full lg:w-1/3 lg:h-[100vh] sm:h-24 p-4 shadow-lg overflow-y-auto">
+      <div className="w-full sm:w-full lg:w-1/3 min-h-[50vh] sm:min-h-[70vh] lg:h-[100vh] p-4 shadow-lg overflow-y-autoo">
+        {/*Esto es la primer seccion*/}
         <h1 className="text-3xl sm:text-4xl font-bold mb-6 text-center p-4">
           Detalles de la bebida
         </h1>
