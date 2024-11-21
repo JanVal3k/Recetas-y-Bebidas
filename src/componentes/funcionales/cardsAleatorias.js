@@ -2,8 +2,10 @@ import React, { useState, useCallback } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment } from "react";
 import PopOverCards from "./popoverCards";
+import { useTranslation } from "react-i18next";
 
 const Cards = ({ recetas }) => {
+  const { t, i18n } = useTranslation();
   const [esAbierto, setEsAbierto] = useState(false);
   const [selecionarReceta, setSelecionarReceta] = useState(null);
 
@@ -16,12 +18,17 @@ const Cards = ({ recetas }) => {
     setEsAbierto(true);
   }, []);
 
+  const cambiarIdioma = () => {
+    const nuevoIdioma = i18n.language === "es" ? "en" : "es";
+    i18n.changeLanguage(nuevoIdioma);
+  };
+
   return (
     <>
       {recetas.map((receta, index) => (
         <div
           key={index}
-          className="w-full max-w-lg sm:w-full rounded-lg shadow-2xl  hover:scale-105 transition-transform duration-200 overflow-hidden"
+          className="w-full max-w-lg sm:w-full rounded-lg shadow-2xl hover:scale-105 transition-transform duration-200 overflow-hidden"
         >
           <img
             className="w-full h-48 object-cover rounded-t-lg"
@@ -31,15 +38,15 @@ const Cards = ({ recetas }) => {
           <div className="p-5 flex flex-col justify-between h-[calc(100%-12rem)] overflow-y-auto bg-white">
             <div>
               <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900">
-                Receta: {receta.strMeal}
+                {t("receta")}: {receta.strMeal}
               </h5>
               <p className="mb-3 text-base font-normal text-gray-800">
-                <b>País:</b> {receta.strArea}
+                <b>{t("pais")}:</b> {receta.strArea}
                 <br />
-                <b>Categoría:</b> {receta.strCategory}
+                <b>{t("categoria")}:</b> {receta.strCategory}
               </p>
               <h6 className="mb-2 text-xl font-bold tracking-tight text-gray-900">
-                Ingredientes y Medidas:
+                {t("ingredientes")}:
               </h6>
               <ul className="mb-4">
                 {receta.ingredientesYMedidas.map((item, idx) => (
@@ -55,9 +62,8 @@ const Cards = ({ recetas }) => {
             <button
               onClick={() => abrirModal(receta)}
               className="w-full inline-flex justify-center items-center px-3 py-2 text-base font-medium text-center text-white bg-teal-700 rounded-lg hover:bg-teal-800 focus:ring-4 focus:outline-none focus:ring-teal-300 transition-colors duration-300"
-              aria-label={`Ver preparación de ${receta.strMeal}`}
             >
-              Preparación
+              {t("preparacion")}
               <svg
                 className="rtl:rotate-180 w-3.5 h-3.5 ms-2"
                 aria-hidden="true"
@@ -108,19 +114,18 @@ const Cards = ({ recetas }) => {
                     as="h3"
                     className="text-lg font-medium leading-6 text-gray-900"
                   >
-                    Preparación de {selecionarReceta?.strMeal}
+                    {t("preparacion")} {selecionarReceta?.strMeal}
                   </Dialog.Title>
                   <div className="mt-2">
                     <PopOverCards receta={selecionarReceta} />
                   </div>
-
                   <div className="mt-4">
                     <button
                       type="button"
                       className="inline-flex justify-center rounded-md border border-transparent bg-teal-100 px-4 py-2 text-sm font-medium text-teal-900 hover:bg-teal-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 transition-colors duration-300"
                       onClick={cerrarModal}
                     >
-                      Cerrar
+                      {t("cerrar")}
                     </button>
                   </div>
                 </Dialog.Panel>

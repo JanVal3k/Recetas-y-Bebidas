@@ -4,6 +4,7 @@ const useRecetasAleatorias = (cantidad = 3) => {
   //-----------------------------------------------
   const [recetas, setRecetas] = useState([]);
   const [cargando, setCargando] = useState(true);
+  const [idioma, setIdioma] = useState("es");
   const [error, setError] = useState(null);
   //-----------------------------------------------
   useEffect(() => {

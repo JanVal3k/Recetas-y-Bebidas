@@ -7,6 +7,8 @@ import BusquedaXPais from "./buscarXPais";
 import CargandoComponente from "./cargandoImagenes";
 import SelectorBebidas from "./buscarBebida";
 import "../../styles/styles.css";
+import { useTranslation } from "react-i18next";
+import CambioIdioma from "../funcionales/cambioIdioma";
 //---------------------------------
 function App() {
   const [estaCargando, setEstaCargando] = useState(true);
@@ -15,7 +17,7 @@ function App() {
   const diariasRef = useRef(null);
   const paisesRef = useRef(null);
   const bebidasRef = useRef(null);
-
+  const { t } = useTranslation();
   //---------------------------------
   useEffect(() => {
     const timerCarga = setTimeout(() => {
@@ -44,6 +46,7 @@ function App() {
 
   return (
     <div className="flex flex-col min-h-screen">
+      <CambioIdioma />
       <div className="h-[90vh] w-full flex items-center justify-center ">
         <Inicio ref={inicioRef} />
       </div>
