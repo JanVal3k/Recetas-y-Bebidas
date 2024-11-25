@@ -35,10 +35,12 @@ const useBusquedaBebida = (bebidaId) => {
       if (!bebidaId) return;
 
       try {
+        console.log("ID bebida:", bebidaId);
         setCargando(true);
         const response = await fetch(
           `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${bebidaId}`
         );
+        console.log("Respuesta cruda:", response);
         const data = await response.json();
 
         if (data.drinks) {

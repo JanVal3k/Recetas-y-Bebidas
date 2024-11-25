@@ -1,10 +1,11 @@
 import React from "react";
 import useScrollPosition from "../clase/scrollMenu";
+import { useTranslation } from "react-i18next";
 
 const Menu = ({ scrollToSection, refs }) => {
   const scrollPosition = useScrollPosition();
   const isScrolled = scrollPosition > 0;
-
+  const { t, i18n } = useTranslation();
   return (
     <div
       className={`${
@@ -21,7 +22,7 @@ const Menu = ({ scrollToSection, refs }) => {
             onClick={() => scrollToSection(refs.inicioRef)}
             className="font-bold uppercase text-black hover:text-white transition-colors duration-300 relative z-10 cursor-pointer text-xs sm:text-sm"
           >
-            Inicio
+            {t("menu.inicio")}
           </a>
 
           <a className="font-bold uppercase text-black hover:text-white transition-colors duration-300 relative z-10 cursor-default hidden sm:inline">
@@ -32,7 +33,7 @@ const Menu = ({ scrollToSection, refs }) => {
             onClick={() => scrollToSection(refs.diariasRef)}
             className="font-bold uppercase text-black hover:text-white transition-colors duration-300 relative z-10 cursor-pointer text-xs sm:text-sm"
           >
-            Diarias
+            {t("menu.diarias")}
           </a>
 
           <a className="font-bold uppercase text-black hover:text-white transition-colors duration-300 relative z-10 cursor-default hidden sm:inline">
@@ -43,7 +44,7 @@ const Menu = ({ scrollToSection, refs }) => {
             onClick={() => scrollToSection(refs.paisesRef)}
             className="font-bold uppercase text-black hover:text-white transition-colors duration-300 relative z-10 cursor-pointer text-xs sm:text-sm"
           >
-            Paises
+            {t("menu.paises")}
           </a>
 
           <a className="font-bold uppercase text-black hover:text-white transition-colors duration-300 relative z-10 cursor-default hidden sm:inline">
@@ -54,7 +55,7 @@ const Menu = ({ scrollToSection, refs }) => {
             onClick={() => scrollToSection(refs.bebidasRef)}
             className="font-bold uppercase text-black hover:text-white transition-colors duration-300 relative z-10 cursor-pointer text-xs sm:text-sm"
           >
-            Tragos y Bebidas
+            {t("menu.tragos")}
           </a>
 
           <span className="absolute w-full h-full top-0 left-0 bg-teal-200 rounded-full transform scale-x-0 group-hover:scale-x-110 transition-transform group-hover:duration-500 duration-1000 origin-right"></span>

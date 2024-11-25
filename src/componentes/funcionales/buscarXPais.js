@@ -6,10 +6,11 @@ import ImagenesReceta from "./seccionesTabs/tabImagenReceta";
 import IngredientesYPreparacion from "./seccionesTabs/ingredientesYPreparacion";
 import CargandoComponente from "./cargandoImagenes";
 import MientrasSelecciona from "./componenteDeCarga";
-//import VideoDeReceta from "./seccionesTabs/videoReceta";
 import "../../styles/styles.css";
+import { useTranslation } from "react-i18next";
 
 const SelectorPais = forwardRef((props, ref) => {
+  const { t, i18n } = useTranslation();
   const {
     paises,
     cargando: cargandoPaises,
@@ -41,34 +42,30 @@ const SelectorPais = forwardRef((props, ref) => {
     setTimeout(() => setEstaCargando(false), 2000);
   };
 
-  if (cargandoPaises) return <div>Cargando lista de países...</div>;
+  if (cargandoPaises) return <div>{t("paises.cargando")}...</div>;
   if (errorPaises) return <div>Error: {errorPaises}</div>;
 
   const tabs = [
     {
-      label: "Imagen",
+      label: t("paises.imagen"),
       content: (
         <div className="h-full sm:h-[70vh] flex rounded-lg items-center justify-center overflow-hidden">
           {recetaSeleccionada ? (
             <ImagenesReceta idReceta={recetaSeleccionada} />
           ) : (
-            <p className="text-xl text-gray-800">
-              Selecciona una receta para ver su imagen
-            </p>
+            <p className="text-xl text-gray-800">{t("paises.textoAlt1")}</p>
           )}
         </div>
       ),
     },
     {
-      label: "Receta",
+      label: t("paises.receta"),
       content: (
         <div className="h-full sm:h-[70vh] flex rounded-lg items-center justify-center overflow-hidden">
           {recetaSeleccionada ? (
             <IngredientesYPreparacion idReceta={recetaSeleccionada} />
           ) : (
-            <p className="text-xl text-gray-800">
-              Selecciona una receta para ver su preparacion e ingredientes.
-            </p>
+            <p className="text-xl text-gray-800">{t("paises.textoAlt2")}</p>
           )}
         </div>
       ),
@@ -82,7 +79,7 @@ const SelectorPais = forwardRef((props, ref) => {
     >
       <div className="w-full md:w-1/2 lg:w-1/2 p-4 overflow-y-auto shadow-2xl">
         <h2 className="text-2xl text-gray-800 font-bold mb-4">
-          Selecciona un país:
+          {t("paises.selecion")}:
         </h2>
         <select
           value={paisSeleccionado}
@@ -90,7 +87,7 @@ const SelectorPais = forwardRef((props, ref) => {
           className="w-full p-2 mb-4 hover:bg-gray-300 transition-all duration-200 border border-gray-400 rounded-lg"
         >
           <option value="" className="text-gray-800 font-bold">
-            Selecciona un país
+            {t("paises.selecion")}
           </option>
           {paises.map((pais) => (
             <option key={pais} value={pais}>
@@ -101,11 +98,11 @@ const SelectorPais = forwardRef((props, ref) => {
         {paisSeleccionado && (
           <div>
             <h3 className="text-xl text-gray-800 font-bold mb-4">
-              Recetas de: {paisSeleccionado}:
+              {t("paises.De")}: {paisSeleccionado}:
             </h3>
             {cargandoRecetas ? (
               <div className="text-center text-gray-800 py-2">
-                Cargando recetas...
+                {t("paises.cargando2")}...
               </div>
             ) : errorRecetas ? (
               <div className="text-center py-2 text-red-500">

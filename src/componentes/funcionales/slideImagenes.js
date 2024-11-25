@@ -3,8 +3,10 @@ import useRecetasAleatorias from "../clase/aleatoriaApiMealDB";
 import { motion } from "framer-motion";
 import Cards from "./cardsAleatorias";
 import "../../styles/styles.css";
+import { useTranslation } from "react-i18next";
 
 const SlideImagenes = forwardRef((props, ref) => {
+  const { t, i18n } = useTranslation();
   const { recetas, cargando, error } = useRecetasAleatorias(3);
 
   if (error) {
@@ -12,7 +14,7 @@ const SlideImagenes = forwardRef((props, ref) => {
   }
 
   if (cargando) {
-    return <p className="text-center">Cargando recetas...</p>;
+    return <p className="text-center">{t("cargando")}</p>;
   }
 
   return (
@@ -23,14 +25,14 @@ const SlideImagenes = forwardRef((props, ref) => {
           whileHover={{ scale: 1.1, color: "#e53e3e" }}
           transition={{ type: "spring", stiffness: 300 }}
         >
-          RECETAS
+          {t("recetas")}
         </motion.p>
         <motion.p
           className="text-3xl md:text-4xl font-extrabold text-gray-800 md:writing-vertical-rl"
           whileHover={{ scale: 1.1, color: "#e53e3e" }}
           transition={{ type: "spring", stiffness: 300 }}
         >
-          DIARIAS
+          {t("diarias")}
         </motion.p>
       </div>
 

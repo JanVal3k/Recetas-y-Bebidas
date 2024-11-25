@@ -1,8 +1,10 @@
 import React, { forwardRef } from "react";
 import { motion } from "framer-motion";
 import "../../styles/styles.css";
+import { useTranslation } from "react-i18next";
 
 const Inicio = forwardRef((props, ref) => {
+  const { t, i18n } = useTranslation();
   return (
     <div
       ref={ref}
@@ -20,7 +22,7 @@ const Inicio = forwardRef((props, ref) => {
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
-          ¡Bienvenido a recetas y bebidas!
+          {t("inicio.bienvenida")}
         </motion.h1>
 
         <motion.p
@@ -29,7 +31,7 @@ const Inicio = forwardRef((props, ref) => {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5, delay: 0.4 }}
         >
-          Descubre el sabor del mundo con nuestra selección diaria de recetas.
+          {t("inicio.texto1")}
         </motion.p>
 
         <motion.div
@@ -39,19 +41,17 @@ const Inicio = forwardRef((props, ref) => {
           transition={{ duration: 0.5, delay: 0.6 }}
         >
           <p className="text-lg sm:text-xl md:text-2xl text-teal-700 hover:text-teal-500 transition-colors duration-300">
-            Sumérgete en la cocina de diferentes países y elige la receta que
-            más te inspire.
+            {t("inicio.texto2")}
           </p>
           <p className="text-lg sm:text-xl md:text-2xl text-teal-700 hover:text-teal-500 transition-colors duration-300">
-            Déjate cautivar por nuestra exclusiva selección de tragos, perfectos
-            para cada ocasión.
+            {t("inicio.texto3")}
           </p>
           <motion.p
             className="text-2xl sm:text-3xl md:text-4xl text-teal-600 font-semibold"
             whileHover={{ scale: 1.05, originX: 0 }}
             transition={{ type: "spring", stiffness: 300 }}
           >
-            ¡La gastronomía global al alcance de tus manos!
+            {t("inicio.texto4")}
           </motion.p>
         </motion.div>
 

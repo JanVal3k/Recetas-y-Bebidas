@@ -1,9 +1,11 @@
 import React, { useEffect } from "react";
+import { useTranslation } from "react-i18next";
 
 const CargandoComponente = ({
   onCargandoCompletado,
   pantallaCompleta = true,
 }) => {
+  const { t, i18n } = useTranslation();
   useEffect(() => {
     const timer = setTimeout(() => {
       onCargandoCompletado();
@@ -27,7 +29,7 @@ const CargandoComponente = ({
       />
       <br />
       <p className="mt-4 text-xl font-bold text-gray-800">
-        Cargando recetas...
+        {t("paises.cargando2")}...
       </p>
     </div>
   );

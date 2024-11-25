@@ -18,11 +18,6 @@ const Cards = ({ recetas }) => {
     setEsAbierto(true);
   }, []);
 
-  const cambiarIdioma = () => {
-    const nuevoIdioma = i18n.language === "es" ? "en" : "es";
-    i18n.changeLanguage(nuevoIdioma);
-  };
-
   return (
     <>
       {recetas.map((receta, index) => (

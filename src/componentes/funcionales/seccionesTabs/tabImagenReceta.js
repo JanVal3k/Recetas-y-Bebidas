@@ -1,11 +1,16 @@
 import React from "react";
 import useDetallesReceta from "../../clase/DetallesReceta";
+import { useTranslation } from "react-i18next";
 
 const ImagenesReceta = ({ idReceta }) => {
   const { detallesReceta, cargando, error } = useDetallesReceta(idReceta);
-
+  const { t, i18n } = useTranslation();
   if (cargando) {
-    return <div className="text-center">Cargando imagen de la receta...</div>;
+    return (
+      <div className="text-center">
+        {t("imagenYPreparacion.cargandoImage")}...
+      </div>
+    );
   }
 
   if (error) {
@@ -13,9 +18,7 @@ const ImagenesReceta = ({ idReceta }) => {
   }
 
   if (!detallesReceta) {
-    return (
-      <div className="text-center">No se ha seleccionado ninguna receta</div>
-    );
+    return <div className="text-center">{t("imagenYPreparacion.noSelec")}</div>;
   }
 
   return (
